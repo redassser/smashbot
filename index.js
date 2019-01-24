@@ -21,9 +21,20 @@ client.on("message", (message) => {
   //code starts here lol
   
   if (command === "fclist") {
-    const array = client.friend.keyArray()
-    if (array.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
-    message.channel.send("Friend codes are:\n``"+array.join('\n')+"``");
+    const peeps = client.friend.keyArray()
+    if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
+    for (var i = 0; i < peeps.length; i++) {
+      peeps[i] = "Added by "+peeps[i]+" -> "+client.friend.get(peeps[i]);
+    }
+    message.channel.send("Friend codes are:\n``"+peeps.join('\n')+"``");
+  }
+  if (command === "fcadd") {
+    if (array.length <= 2) {message.channel.send(".fcadd [name] [fc]")}
+    var name = array.shift()
+    var fc = array
+    var msg = name+" | "+fc
+    client.friend.set(message.author.id,msg)
+    message.channel.send(msg+" added by "+name)
   }
   
 });
