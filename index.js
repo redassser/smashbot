@@ -5,8 +5,8 @@ const Discord = require("discord.js");
 const client = new Discord.Client();
 const prefix = "!";
 client.friend = new Enmap({ provider: new EnmapMongo({
-  name: `smashbot`,
-  dbName: `smashfriend`,
+  name: `smashfriend`,
+  dbName: `smashbot`,
   url: process.env.mongo
 })
 })
