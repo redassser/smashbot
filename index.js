@@ -16,7 +16,7 @@ client.on("ready", () => {
 });
 client.on("message", (message) => {
   const array = message.content.slice(prefix.length).trim().split(/ +/g);
-  const command = args.shift();  
+  const command = array.shift();  
   if (!message.content.startsWith(prefix) || message.author.bot) return;
   //code starts here lol
   
