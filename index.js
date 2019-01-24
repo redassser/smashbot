@@ -21,7 +21,7 @@ client.on("message", (message) => {
   //code starts here lol
   
   if (command === "fclist") {
-    const array = client.freind.keyArray()
+    const array = client.friend.keyArray()
     if (array.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     message.channel.send("Friend codes are:\n``"+array.join('\n')+"``");
   }
