@@ -22,10 +22,7 @@ client.on("message", (message) => {
   
   if (command === "fclist") {
     const array = client.freind.keyArray()
-    if (array.length === 0) {
-      for (var i = 0; i < array.length; i++) {message.channel.send("``No commands have been made. Use !set to add some!``");return}
-      array[i] = array[i].split(message.guild.id).join("");
-    }
+    if (array.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     message.channel.send("Friend codes are:\n``"+array.join('\n')+"``");
   }
   
