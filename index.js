@@ -24,14 +24,14 @@ client.on("message", (message) => {
     const peeps = client.friend.keyArray()
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = 0; i < peeps.length; i++) {
-      peeps[i] = "Added by "+peeps[i]+" -> "+client.friend.get(peeps[i]);
+      peeps[i] = "Added by "+client.fetchUser(peeps[i])+" -> "+client.friend.get(peeps[i]);
     }
     message.channel.send("Friend codes are:\n``"+peeps.join('\n')+"``");
   }
   if (command === "fcadd") {
     if (array.length <= 2) {message.channel.send(".fcadd [name] [fc]")}
     var name = array.shift()
-    var fc = array
+    var fc = array.join("-")
     var msg = name+" | "+fc
     client.friend.set(message.author.id,msg)
     message.channel.send(msg+" added by "+name)
