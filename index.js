@@ -12,7 +12,7 @@ client.friend = new Enmap({ provider: new EnmapMongo({
 })
 client.on("ready", () => {
   console.log("Fight!");
-  client.user.setPresence({ game: { name: 'wip' }, status: 'online' });
+  client.user.setPresence({ game: { name: '.smash' }, status: 'online' });
 });
 client.on("message", (message) => {
   const array = message.content.slice(prefix.length).trim().split(/ +/g);
