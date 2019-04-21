@@ -27,8 +27,6 @@ client.on("message", (message) => {
       console.log(peeps[i]);
       peeps[i] = client.fetchUser(peeps[i]);
       console.log(peeps[i].username);
-      peeps[i]="Added by "+peeps[i]+" -> "+client.friend.get(peeps[i]);
-      console.log(peeps[i]);
     }
     message.channel.send("Friend codes are:\n``"+peeps.join('\n')+"``");
   }
