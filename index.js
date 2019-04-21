@@ -29,7 +29,7 @@ client.on("message", (message) => {
     message.channel.send("Friend codes are:\n``"+peeps.join('\n')+"``");
   }
   if (command === "fcadd") {
-    if (array.length <= 2) {message.channel.send(".fcadd [name] [fc]")}
+    if (array.length <= 2) {message.channel.send(".fcadd [name] [fc]"); return;}
     var name = array.shift()
     var fc = array.join("-")
     var msg = name+" | "+fc
