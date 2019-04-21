@@ -25,7 +25,7 @@ client.on("message", (message) => {
     const name = [];
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = 0; i < peeps.length; i++) {
-      name.push(client.fetchUser(peeps[i].username);
+      name.push(client.fetchUser(peeps[i]).username);
       client.fetchUser(peeps[i]).then(myUser => {
         peeps[i]=myUser.username;
         name.push(peeps[i]);
