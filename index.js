@@ -22,7 +22,7 @@ client.on("message", (message) => {
   
   if (command === "fclist") {
     const peeps = client.friend.keyArray();
-    const name = [];
+    var name = [];
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = 0; i < peeps.length; i++) {
       name.push(client.fetchUser(peeps[i]).username);
