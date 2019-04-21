@@ -24,7 +24,7 @@ client.on("message", (message) => {
     const peeps = client.friend.keyArray();
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = 0; i < peeps.length; i++) {
-      var peeps[i] = message.guild.fetchMember(client.fetchUser(peeps[i]));
+      peeps[i] = message.guild.fetchMember(client.fetchUser(peeps[i]));
     }
     console.log(peeps)
     message.channel.send("Friend codes are:\n``"+peeps.join('\n')+"``");
