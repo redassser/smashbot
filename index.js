@@ -27,7 +27,7 @@ client.on("message", (message) => {
       client.fetchUser(peeps[i]).then(myUser => {
         peeps[i]=myUser.username;
       });
-      peeps[i]="Added by "+client.fetchUser(peeps[i]).username+" -> "+client.friend.get(peeps[i]);
+      peeps[i]="Added by "+peeps[i]+" -> "+client.friend.get(peeps[i]);
     }
     message.channel.send("Friend codes are:\n``"+peeps.join('\n')+"``");
   }
