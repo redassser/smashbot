@@ -19,7 +19,9 @@ client.on("message", (message) => {
   const command = array.shift();  
   if (!message.content.startsWith(prefix) || message.author.bot) return;
   //code starts here lol
-  
+  if (command === "smash") {
+    message.channel.send("``This is SmashBot for the HCST gaming discord``\nAdd you friendcode with ``.fcadd [name] [fc]``\nSee everyone's friendcode with ``.fclist``");
+  }
   if (command === "fclist") {
     const peeps = client.friend.keyArray();
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
