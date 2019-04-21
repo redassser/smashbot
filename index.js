@@ -21,14 +21,15 @@ client.on("message", (message) => {
   //code starts here lol
   
   if (command === "fclist") {
-    const peeps = client.friend.keyArray()
+    const peeps = client.friend.keyArray();
+    const names = [];
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = 0; i < peeps.length; i++) {
-      console.log(peeps[i]);
-      peeps[i] = client.fetchUser(peeps[i]);
-      console.log(peeps[i].username);
+      client.fetchUser(peeps[i]).then(myUser => {
+        names.push(myUser.username);
+      });
     }
-    message.channel.send("Friend codes are:\n``"+peeps.join('\n')+"``");
+    message.channel.send("Friend codes are:\n``"+names.join('\n')+"``");
   }
   if (command === "fcadd") {
     if (array.length < 2) {message.channel.send(".fcadd [name] [fc]"); return;}
