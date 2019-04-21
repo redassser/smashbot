@@ -24,12 +24,9 @@ client.on("message", (message) => {
     const peeps = client.friend.keyArray()
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = 0; i < peeps.length; i++) {
-      console.log(peeps[i]);
-      console.log(client.fetchUser(peeps[i]));
       client.fetchUser(peeps[i]).then(myUser => {
-        console.log(myUser.username); // My user's avatar is here!
+        peeps[i]="Added by "+myUser.username+" -> "+client.friend.get(peeps[i]); // My user's avatar is here!
       });
-      peeps[i] = "Added by "+client.fetchUser(peeps[i]).username+" -> "+client.friend.get(peeps[i]);
     }
     message.channel.send("Friend codes are:\n``"+peeps.join('\n')+"``");
   }
