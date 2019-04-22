@@ -30,7 +30,7 @@ client.on("message", (message) => {
   }
   if (command === "fclist") {
     const peeps = client.friend.keyArray();
-    if (((array[0]*5)-5)>peeps.length+) {message.channel.send("There aren't that many pages");return;}
+    if (((array[0]*5)-5)>peeps.length+)) {message.channel.send("There aren't that many pages");return;}
     var x;
     switch(array[0]) {
       case "1":
