@@ -31,13 +31,13 @@ client.on("message", (message) => {
   if (command === "fclist") {
     var x;
     switch(array[0]) {
-      case 1:
+      case "1":
         x = 0
         break;
-      case 2:
+      case "2":
         x = 5
         break;
-      case 3:
+      case "3":
         x = 10
         break;
       default:
