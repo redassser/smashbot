@@ -21,7 +21,7 @@ client.on("message", (message) => {
   //code starts here lol
   if (command === "smash") {
     let smashEmbed = new Discord.RichEmbed() 
-    .setColor("RANDOM")
+    .setColor("#3f9cc6")
     .setTitle("This is SmashBot for the HCST gaming discord")
     .setDescription("Use this bot to view friendcodes and share your own!")
     .addField("Add your friendcode to the list with:","``.fcadd [name] [friendcode]``")
@@ -34,8 +34,6 @@ client.on("message", (message) => {
     for (var i = 0; i < peeps.length; i++) {
       peeps[i] = "Added by: "+client.users.get(peeps[i]).username+" | "+client.friend.get(peeps[i]);
     }
-    
-    console.log(peeps)
     message.channel.send("Friend codes are:\n``"+peeps.join('\n')+"``");
   }
   if (command === "fcadd") {
