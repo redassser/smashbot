@@ -48,7 +48,7 @@ client.on("message", (message) => {
     .setTitle("This is a list of friendcodes from people in HT!")
     const peeps = client.friend.keyArray();
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
-    for (var i = x; i < 5; i++) {
+    for (var i = x; i < (x+5); i++) {
       listEmbed.addField("Added by: "+client.users.get(peeps[i]).username,client.friend.get(peeps[i]));
     }
     message.channel.send(listEmbed);
