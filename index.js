@@ -20,7 +20,13 @@ client.on("message", (message) => {
   if (!message.content.startsWith(prefix) || message.author.bot) return;
   //code starts here lol
   if (command === "smash") {
-    message.channel.send("``This is SmashBot for the HCST gaming discord``\nAdd you friendcode with ``.fcadd [name] [fc]``\nSee everyone's friendcode with ``.fclist``");
+    let smashEmbed = new Discord.RichEmbed() 
+    .setColor("RANDOM")
+    .setTitle("This is SmashBot for the HCST gaming discord")
+    .setDescription("Use this bot to view friendcodes and share your own!")
+    .addField("Add your friendcode to the list with:","``.fcadd [name] [friendcode]``")
+    .addField("See everyone else's friendcode with:","``.fclist``")
+    message.channel.send(smashEmbed);
   }
   if (command === "fclist") {
     const peeps = client.friend.keyArray();
@@ -38,7 +44,7 @@ client.on("message", (message) => {
     var fc = array.join("-")
     var msg = name+" | "+fc
     client.friend.set(message.author.id,msg)
-    message.channel.send(msg+" added by "+name)
+    message.channel.send(msg+" added by "+message.author.username)
   }
   
 });
