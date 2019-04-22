@@ -29,12 +29,27 @@ client.on("message", (message) => {
     message.channel.send(smashEmbed);
   }
   if (command === "fclist") {
+    var x;
+    switch(array[0]) {
+      case 1:
+        x = 0
+        break;
+      case 2:
+        x = 5
+        break;
+      case 3:
+        x = 10
+        break;
+      default:
+        x = 0
+        break;
+    }
     let listEmbed = new Discord.RichEmbed()
     .setTitle("This is a list of friendcodes from people in HT!")
     const peeps = client.friend.keyArray();
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
-    for (var i = 0; i < peeps.length; i++) {
-      listEmbed.addField("Added by: "+client.users.get(peeps[i]).username,"client.friend.get(peeps[i])");
+    for (var i = x; i < 5; i++) {
+      listEmbed.addField("Added by: "+client.users.get(peeps[i]).username,client.friend.get(peeps[i]));
     }
     message.channel.send(listEmbed);
   }
