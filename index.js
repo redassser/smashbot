@@ -30,6 +30,7 @@ client.on("message", (message) => {
   }
   if (command === "fclist") {
     const peeps = client.friend.keyArray();
+    if (!isNaN(array[0])) {message.channel.send(".fclist [page number]");return;}
     if (((array[0]*5))>(peeps.length+5)) {message.channel.send("There aren't that many pages");return;}
     if (!isNaN(array[0])) {
       var x = (array[0]*5)-5;
@@ -40,7 +41,8 @@ client.on("message", (message) => {
       }
     }
     let listEmbed = new Discord.RichEmbed()
-    .setTitle("This is a list of friendcodes from people in HT!");
+    .setTitle("This is a list of friendcodes from people in HT!")
+    .setFootnote("Page "+x)
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = x; i < y; i++) {
       listEmbed.addField("Added by: "+client.users.get(peeps[i]).username,client.friend.get(peeps[i]));
