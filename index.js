@@ -31,10 +31,11 @@ client.on("message", (message) => {
   if (command === "fclist") {
     const peeps = client.friend.keyArray();
     if (((array[0]*5)-5)>(peeps.length+5)) {message.channel.send("There aren't that many pages");return;}
-    var x;
+    var x;var y;
     switch(array[0]) {
       case "1":
         x = 0
+        y = Math.floor(x/5)*5
         break;
       case "2":
         x = 5
@@ -46,6 +47,9 @@ client.on("message", (message) => {
         x = 0
         break;
     }
+    console.log(y);
+    y = Math.floor(x/5)*5;
+    console.log(y);
     let listEmbed = new Discord.RichEmbed()
     .setTitle("This is a list of friendcodes from people in HT!");
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
@@ -59,7 +63,7 @@ client.on("message", (message) => {
     var name = array.shift()
     var fc = array.join("-")
     var msg = name+" | "+fc
-    client.friend.set(message.author.id,msg)
+    client.friend.set(message.author.id+".fc",msg)
     message.channel.send(msg+" added by "+message.author.username)
   }
   
