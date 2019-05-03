@@ -35,7 +35,7 @@ client.on("message", (message) => {
       var x = (array[0]*5)-5;
       console.log(peeps.length);
       console.log(x)
-      if ((peeps.length)<(x+5)) {
+      if ((peeps.length)>(x+5)) {
         var y = x+5;
       } else {
         var y = peeps.length;
