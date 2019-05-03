@@ -33,7 +33,7 @@ client.on("message", (message) => {
     if (((array[0]*5)-5)>(peeps.length+5)) {message.channel.send("There aren't that many pages");return;}
     if (!isNaN(array[0])) {
       var x = (array[0]*5)-5;
-      console.log(peeps.length<(x+5));
+      console.log(peeps.length);
       console.log(x)
       if ((peeps.length)<(x+5)) {
         var y = x+5;
