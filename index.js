@@ -35,11 +35,7 @@ client.on("message", (message) => {
     if (((array[0]*5))>(peeps.length+5)) {message.channel.send("``There aren't that many pages``");return;}
     if (!isNaN(array[0])) {
       var x = (array[0]*5)-5;
-      if ((peeps.length)>(x+5)) {
-        var y = x+5;
-      } else {
-        var y = peeps.length;
-      }
+      var y = ((peeps.length)>(x+5)) ? (x+5) : peeps.length;
     }
     let listEmbed = new Discord.RichEmbed()
     .setTitle("This is a list of friendcodes from people in HT!")
