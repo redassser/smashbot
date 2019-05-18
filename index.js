@@ -1,3 +1,4 @@
+
 const express = require('express');
 const Enmap = require('enmap');
 const EnmapMongo = require("enmap-mongo");
@@ -34,11 +35,15 @@ client.on("message", (message) => {
     if (((array[0]*5))>(peeps.length+5)) {message.channel.send("``There aren't that many pages``");return;}
     if (!isNaN(array[0])) {
       var x = (array[0]*5)-5;
-      var y = ((peeps.length)>(x+5)) ? (x+5) : peeps.length;
+      if ((peeps.length)>(x+5)) {
+        var y = x+5;
+      } else {
+        var y = peeps.length;
+      }
     }
     let listEmbed = new Discord.RichEmbed()
     .setTitle("This is a list of friendcodes from people in HT!")
-    .setFooter("Page "+(x+1))
+    .setFooter("Page "+x)
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = x; i < y; i++) {
       listEmbed.addField("Added by: "+client.users.get(peeps[i]).username,client.friend.get(peeps[i]));
