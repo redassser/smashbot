@@ -31,7 +31,7 @@ client.on("message", (message) => {
   if (command === "fclist") {
     const peeps = client.friend.keyArray();
     if (isNaN(array[0])) {message.channel.send("``.fclist [page number]``");return;}
-    if (array[0] = "0") {message.channel.send("``Good job, bologna head.``");return;}
+    if (array[0] = 0) {message.channel.send("``Good job, bologna head.``");return;}
     if (((array[0]*5))>(peeps.length+5)) {message.channel.send("``There aren't that many pages``");return;}
     if (!isNaN(array[0])) {
       var x = (array[0]*5)-5;
