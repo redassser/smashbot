@@ -39,7 +39,7 @@ client.on("message", (message) => {
     }
     let listEmbed = new Discord.RichEmbed()
     .setTitle("This is a list of friendcodes from people in HT!")
-    .setFooter("Page "+x)
+    .setFooter("Page "+array[0])
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = x; i < y; i++) {
       listEmbed.addField("Added by: "+client.users.get(peeps[i]).username,client.friend.get(peeps[i]));
