@@ -64,9 +64,8 @@ client.on("message", (message) => {
   if (command === "idadd") {
     if (array.length != 2) {message.channel.send("``.idadd [type] [id]``"); return;}
     var type = array.shift(); var id = array.shift();
-    if (type != "stage" || "mii" || "replay" || "video") {
-      client.online.set(type,[id,message.author.id])
-    }
+    if (type != "stage" || "mii" || "replay" || "video") {message.channel.send("``Please use stage, mii, replay or video``");return;}
+    client.online.set(type,[id,message.author.id])
   }
 });
 client.login(process.env.token);
