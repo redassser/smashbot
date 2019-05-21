@@ -33,7 +33,7 @@ client.on("message", (message) => {
     .setDescription("Use this bot to view friendcodes and share your own!")
     .addField("Add your friendcode to the list with:","``.fcadd [name] [friendcode]``")
     .addField("See everyone else's friendcode with:","``.fclist``")
-    .addField("Share your stage, mii, replay or video with:",".idadd")
+    .addField("Share your stage, mii, replay or video with:","``.idadd [stage/mii/replay/video] [id]``")
     message.channel.send(smashEmbed);
   }
   if (command === "fclist") {
@@ -54,15 +54,19 @@ client.on("message", (message) => {
     message.channel.send(listEmbed);
   }
   if (command === "fcadd") {
-    if (array.length < 2) {message.channel.send(".fcadd [name] [fc]"); return;}
+    if (array.length < 2) {message.channel.send("``.fcadd [name] [fc]``"); return;}
     var name = array.shift()
     var fc = array.join("-")
     var msg = name+" | "+fc
-    client.friend.set(message.author.id+".fc",msg)
+    client.friend.set(message.author.id,msg)
     message.channel.send(msg+" added by "+message.author.username)
   }
   if (command === "idadd") {
-    
+    if (array.length != 2) {message.channel.send("``.idadd [type] [id]``"); return;}
+    var type = array.shift(); var id = array.shift();
+    if (type != "stage" || "mii" || "replay" || "video") {
+      client.online.set(type,[id,message.author.id])
+    }
   }
 });
 client.login(process.env.token);
