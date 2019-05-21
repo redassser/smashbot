@@ -33,6 +33,7 @@ client.on("message", (message) => {
     .setDescription("Use this bot to view friendcodes and share your own!")
     .addField("Add your friendcode to the list with:","``.fcadd [name] [friendcode]``")
     .addField("See everyone else's friendcode with:","``.fclist``")
+    .addField("Share your stage, mii, replay or video with:",".idadd")
     message.channel.send(smashEmbed);
   }
   if (command === "fclist") {
@@ -60,6 +61,8 @@ client.on("message", (message) => {
     client.friend.set(message.author.id+".fc",msg)
     message.channel.send(msg+" added by "+message.author.username)
   }
-  
+  if (command === "idadd") {
+    
+  }
 });
 client.login(process.env.token);
