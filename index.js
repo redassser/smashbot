@@ -11,6 +11,12 @@ client.friend = new Enmap({ provider: new EnmapMongo({
   url: process.env.mongo
 })
 })
+client.online = new Enmap({ provider: new EnmapMongo({
+  name: `smashOnline`,
+  dbName: `smashbot`,
+  url: process.env.mongo1
+})
+})
 client.on("ready", () => {
   console.log("Fight!");
   client.user.setPresence({ game: { name: '.smash' }, status: 'online' });
