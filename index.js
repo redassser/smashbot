@@ -62,10 +62,10 @@ client.on("message", (message) => {
     message.channel.send(msg+" added by "+message.author.username)
   }
   if (command === "idadd") {
-    if (array.length != 2) {message.channel.send("``.idadd [type] [id]``"); return;}
-    var type = array.shift(); var id = array.shift();
+    if (array.length < 3) {message.channel.send("``.idadd [type] [id] [Title]``"); return;}
+    var type = array.shift(); var id = array.shift(); var desc = array.join(" ");
     if (type != "stage" || "mii" || "replay" || "video") {message.channel.send("``Please use stage, mii, replay or video``");return;}
-    client.online.set(type,[id,message.author.id])
+    client.online.set(id,[message.author.id,type,desc])
   }
 });
 client.login(process.env.token);
