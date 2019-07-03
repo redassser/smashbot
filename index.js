@@ -38,7 +38,7 @@ client.on("message", (message) => {
   }
   if (command === "fclist") {
     const peeps = client.friend.keyArray();
-    const pages = Math.ceil(peeps/5)
+    const pages = Math.ceil(peeps.length/5)
     if (isNaN(array[0])) {message.channel.send("``.fclist [page number]``");return;}
     if (((array[0]*5))>(peeps.length+5)) {message.channel.send("``There aren't that many pages``");return;}
     if (!isNaN(array[0])) {
@@ -47,7 +47,7 @@ client.on("message", (message) => {
     }
     let listEmbed = new Discord.RichEmbed()
     .setTitle("This is a list of friendcodes from people in HT!")
-    .setFooter("Page ${array[0]} of "+pages)
+    .setFooter('Page ${array[0]} of '+pages)
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = x; i < y; i++) {
       listEmbed.addField("Added by: "+client.users.get(peeps[i]).username,client.friend.get(peeps[i]));
@@ -61,6 +61,24 @@ client.on("message", (message) => {
     var msg = name+" | "+fc
     client.friend.set(message.author.id,msg)
     message.channel.send(msg+" added by "+message.author.username)
+  }
+  if (command === "idlist") {
+    const ids = client.online.keyArray();
+    const pages = Math.ceil(ids/5)
+    if (isNaN(array[0])) {message.channel.send("``.idlist [page number]``");return;}
+    if (((array[0]*5))>(ids.length+5)) {message.channel.send("``There aren't that many pages``");return;}
+    if (!isNaN(array[0])) {
+      var x = (array[0]*5)-5;
+      var y = ((ids.length)>(x+5)) ? (x+5) : ids.length;
+    }
+    let listEmbed = new Discord.RichEmbed()
+    .setTitle("This is a list of friendcodes from people in HT!")
+    .setFooter("Page ${array[0]} of "+pages)
+    if (ids.length === 0) {message.channel.send("``No ids? ***aaaaaaaaa***``");return}
+    for (var i = x; i < y; i++) {
+      listEmbed.addField("Added by: "+client.online.get(ids[i])[1].username, '${ids[i]}'+ client.online.get(ids[i])[0]);
+    }
+    message.channel.send(listEmbed);
   }
   if (command === "idadd") {
     if (array.length < 3) {message.channel.send("``.idadd [type] [id] [Title]``"); return;}
