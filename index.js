@@ -47,7 +47,7 @@ client.on("message", (message) => {
     }
     let listEmbed = new Discord.RichEmbed()
     .setTitle("This is a list of friendcodes from people in HT!")
-    .setFooter('Page ${array[0]} of '+pages)
+    .setFooter('Page '+array[0]+' of '+pages)
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = x; i < y; i++) {
       listEmbed.addField("Added by: "+client.users.get(peeps[i]).username,client.friend.get(peeps[i]));
@@ -73,7 +73,7 @@ client.on("message", (message) => {
     }
     let listEmbed = new Discord.RichEmbed()
     .setTitle("This is a list of friendcodes from people in HT!")
-    .setFooter("Page ${array[0]} of "+pages)
+    .setFooter("Page "+array[0]+" of "+pages)
     if (ids.length === 0) {message.channel.send("``No ids? ***aaaaaaaaa***``");return}
     for (var i = x; i < y; i++) {
       listEmbed.addField("Added by: "+client.online.get(ids[i])[1].username, '${ids[i]}'+ client.online.get(ids[i])[0]);
