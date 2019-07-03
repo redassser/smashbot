@@ -32,12 +32,13 @@ client.on("message", (message) => {
     .setTitle("This is SmashBot for the HCST gaming discord")
     .setDescription("Use this bot to view friendcodes and share your own!")
     .addField("Add your friendcode to the list with:","``.fcadd [name] [friendcode]``")
-    .addField("See everyone else's friendcode with:","``.fclist``")
-    .addField("Share your stage, mii, replay or video with:","``.idadd [stage/mii/replay/video] [id]``")
+    .addField("See everyone else's friendcode with:","``.fclist [page 1-"+Math.ciel(client.friend.keyArray().length/5)+"]``")
+    .addField("Share your stage, mii, replay or video with:","``.idadd [stage/mii/replay/video] [id] [Title]``")
     message.channel.send(smashEmbed);
   }
   if (command === "fclist") {
     const peeps = client.friend.keyArray();
+    const pages = Math.ciel(peeps/5)
     if (isNaN(array[0])) {message.channel.send("``.fclist [page number]``");return;}
     if (((array[0]*5))>(peeps.length+5)) {message.channel.send("``There aren't that many pages``");return;}
     if (!isNaN(array[0])) {
@@ -46,7 +47,7 @@ client.on("message", (message) => {
     }
     let listEmbed = new Discord.RichEmbed()
     .setTitle("This is a list of friendcodes from people in HT!")
-    .setFooter("Page "+array[0])
+    .setFooter("Page ${array[0]} of "+pages)
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = x; i < y; i++) {
       listEmbed.addField("Added by: "+client.users.get(peeps[i]).username,client.friend.get(peeps[i]));
