@@ -128,7 +128,7 @@ client.on("message", (message) => {
       case "seconds":
         for (var i = 0;i<array.length;i++) {
           if (!(array[i] in fighter)) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
-          if ((client.mains.get(message.author.id)["seconds"]).includes(array[i])) {client.mains.remove(message.author.id,array[i],"seconds");return}
+          if ((client.mains.get(message.author.id)["seconds"]).includes(array[i])) {client.mains.remove(message.author.id,array[i],"seconds");}
           else {client.mains.push(message.author.id,array[i],"seconds")}
         }
         message.channel.send("Your secondaries are "+client.mains.get(message.author.id)["seconds"].join(" | "))
@@ -136,7 +136,7 @@ client.on("message", (message) => {
       case "pockets":
         for (var i = 0;i<array.length;i++) {
           if (!(array[i] in fighter)) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
-          if ((client.mains.get(message.author.id)["pockets"]).includes(array[i])) {client.mains.remove(message.author.id,array[i],"pockets");return}
+          if ((client.mains.get(message.author.id)["pockets"]).includes(array[i])) {client.mains.remove(message.author.id,array[i],"pockets");}
           else {client.mains.push(message.author.id,array[i],"pockets")}
         }
         message.channel.send("Your pockets are "+client.mains.get(message.author.id)["pockets"].join(" | "))
