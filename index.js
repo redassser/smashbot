@@ -120,7 +120,7 @@ client.on("message", (message) => {
       case "mains":
         for (var i = 0;i<array.length;i++) {
           if (!(array[i] in fighter)) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
-          if (array[i] in client.mains.get(message.author.id)["mains"] {client.mains.remove(message.author.id,array[i],"mains");return}
+          if (array[i] in client.mains.get(message.author.id)["mains"]) {client.mains.remove(message.author.id,array[i],"mains");return}
           client.mains.push(message.author.id,array[i],"mains")
         }
         message.channel.send("Your mains are "+client.mains.get(message.author.id)["mains"].join(" | '))
