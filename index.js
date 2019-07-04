@@ -126,9 +126,7 @@ client.on("message", (message) => {
         break;
       case "seconds":
         for (var i = 0;i<array.length;i++) {
-          if (array[i] in fighter) {
           client.mains.push(message.author.id,array[i],"seconds")
-          } else {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
         }
         break;
       case "pockets":
