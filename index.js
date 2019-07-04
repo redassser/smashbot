@@ -146,5 +146,10 @@ client.on("message", (message) => {
         break;
     }
   }
+  if (command === "mains") {
+    var mention = message.mentions.members.first();	
+    if (!message.isMentioned(mention)) {mention = message.author}
+    console.log(mention.id)
+  }
 });
 client.login(process.env.token);
