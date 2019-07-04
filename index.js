@@ -38,7 +38,7 @@ client.on("message", (message) => {
     .setColor("#3f9cc6")
     .setTitle("This is SmashBot for the HCST gaming discord")
     .setDescription("Use this bot to view friendcodes and share your own!")
-    .addField("See a numbered list with every fighter using","``.fighters [page1-"+Math.ceil(Object.keys(fighter).length/15)+"]``")
+    .addField("See a numbered list with every fighter using","``.fighters [page 1-"+Math.ceil(Object.keys(fighter).length/15)+"]``")
     .addField("Add your friendcode to the list with:","``.fcadd [name] [friendcode]``")
     .addField("See everyone else's friendcode with:","``.fclist [page 1-"+Math.ceil(client.friend.keyArray().length/5)+"]``")
     .addField("Share your stage, mii, replay or video with:","``.idadd [stage/mii/replay/video] [id] [Title]``")
@@ -56,7 +56,7 @@ client.on("message", (message) => {
     let em = new Discord.RichEmbed()
     .setTitle("List of every fighter in Smash!")
     .setFooter('Page '+array[0]+' of '+pages)
-    .setDescription("Use the associated numbers to set your characters in ``!main``")
+    .setDescription("Use the associated numbers to set your characters in ``!setup``")
     for (var i = x; i < y; i++) {
       em.addField(fighter[fighters[i]],fighters[i],true);
     }
@@ -113,6 +113,7 @@ client.on("message", (message) => {
     client.online.set(id,[message.author.id,type,desc])
   }
   if (command === "setup") {
+    if (array.length <= 2) {message.channel.send("``.setup [mains|seconds|pockets] [character number (find in .fighters)]``")}
     switch (array[0]) {
       case "mains":
         break;
