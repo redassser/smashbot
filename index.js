@@ -119,21 +119,20 @@ client.on("message", (message) => {
     switch (v) {
       case "mains":
         for (var i = 0;i<array.length;i++) {
-          if (array[i] in fighter) {
+          if (!(array[i] in fighter)) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
           client.mains.push(message.author.id,array[i],"mains")
-          } else {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
         }
         break;
       case "seconds":
         for (var i = 0;i<array.length;i++) {
+          if (!(array[i] in fighter)) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
           client.mains.push(message.author.id,array[i],"seconds")
         }
         break;
       case "pockets":
         for (var i = 0;i<array.length;i++) {
-          if (array[i] in fighter) {
+          if (!(array[i] in fighter)) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
           client.mains.push(message.author.id,array[i],"pockets")
-          } else {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
         }
         break;
       default:
