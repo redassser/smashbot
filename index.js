@@ -123,7 +123,7 @@ client.on("message", (message) => {
           if (array[i] in client.mains.get(message.author.id)["mains"] {client.mains.remove(message.author.id,array[i],"mains");return}
           client.mains.push(message.author.id,array[i],"mains")
         }
-        message.channel.send("Your mains are "+client.mains.get(message.author.id)["mains"].join(" | ')
+        message.channel.send("Your mains are "+client.mains.get(message.author.id)["mains"].join(" | '))
         break;
       case "seconds":
         for (var i = 0;i<array.length;i++) {
