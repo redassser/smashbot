@@ -56,7 +56,7 @@ client.on("message", (message) => {
     let em = new Discord.RichEmbed()
     .setTitle("List of every fighter in Smash!")
     .setFooter('Page '+array[0]+' of '+pages)
-    .setDescription("Use the associated numbers to set your characters in ``!setup``")
+    .setDescription("Use the associated numbers to set your characters in ``!setup``\nEchoes are at the end of the pages")
     for (var i = x; i < y; i++) {
       em.addField(fighter[fighters[i]],fighters[i],true);
     }
@@ -113,13 +113,21 @@ client.on("message", (message) => {
     client.online.set(id,[message.author.id,type,desc])
   }
   if (command === "setup") {
+    if (!client.mains.has(message.author.id)) {client.mains.set(message.author.id,{"mains":[],"seconds":[],"pockets":[]})}
     if (array.length <= 2) {message.channel.send("``.setup [mains|seconds|pockets] [character number (find in .fighters)]``")}
-    switch (array[0]) {
+    const v = array.shift();
+    switch (v) {
       case "mains":
+        client.mains.push(message.author.id,array,"mains")
         break;
       case "seconds":
+        client.mains.push(message.author.id,array,"seconds")
         break;
       case "pockets":
+        client.mains.push(message.author.id,array,"pockets")
+        break;
+      default:
+        message.channel.send("``.setup [mains|seconds|pockets] [character number]``")
         break;
     }
   }
