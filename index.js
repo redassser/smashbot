@@ -120,8 +120,8 @@ client.on("message", (message) => {
       case "mains":
         for (var i = 0;i<array.length;i++) {
           if (!(array[i] in fighter)) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
-          if (array[i] in client.mains.get(message.author.id)["mains"]) {client.mains.remove(message.author.id,array[i],"mains");return}
-          client.mains.push(message.author.id,array[i],"mains")
+          if (array[i] in client.mains.get(message.author.id)["mains"]) {client.mains.remove(message.author.id,array[i],"mains");}
+          else {client.mains.push(message.author.id,array[i],"mains")}
         }
         message.channel.send("Your mains are "+client.mains.get(message.author.id)["mains"].join(" | "))
         break;
@@ -129,7 +129,7 @@ client.on("message", (message) => {
         for (var i = 0;i<array.length;i++) {
           if (!(array[i] in fighter)) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
           if (array[i] in client.mains.get(message.author.id)["seconds"]) {client.mains.remove(message.author.id,array[i],"seconds");return}
-          client.mains.push(message.author.id,array[i],"seconds")
+          else {client.mains.push(message.author.id,array[i],"seconds")}
         }
         message.channel.send("Your secondaries are "+client.mains.get(message.author.id)["seconds"].join(" | "))
         break;
@@ -137,7 +137,7 @@ client.on("message", (message) => {
         for (var i = 0;i<array.length;i++) {
           if (!(array[i] in fighter)) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
           if (array[i] in client.mains.get(message.author.id)["pockets"]) {client.mains.remove(message.author.id,array[i],"pockets");return}
-          client.mains.push(message.author.id,array[i],"pockets")
+          else {client.mains.push(message.author.id,array[i],"pockets")}
         }
         message.channel.send("Your pockets are "+client.mains.get(message.author.id)["pockets"].join(" | "))
         break;
