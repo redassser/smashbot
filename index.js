@@ -44,7 +44,7 @@ client.on("message", (message) => {
     message.channel.send(smashEmbed);
   }
   if (command === "fighters") {
-    const fighters = fighter.keyArray()
+    const fighters = Object.keys(fighter)
     const pages = Math.ceil(fighters.length/10)
     if (!isNaN(array[0])) {
       var x = (array[0]*10)-10;
