@@ -114,14 +114,16 @@ client.on("message", (message) => {
   }
   if (command === "setup") {
     if (!client.mains.has(message.author.id)) {client.mains.set(message.author.id,{"mains":[],"seconds":[],"pockets":[]})}
-    if (array.length < 2) {message.channel.send("``.setup [mains|seconds|pockets] [character number (find in .fighters)]``");return;}
+    if (array.length < 2) {message.channel.send("``.setup [mains|seconds|pockets] [character number (find in .fighters) to add, or remove if the number is already present]``");return;}
     const v = array.shift();
     switch (v) {
       case "mains":
         for (var i = 0;i<array.length;i++) {
           if (!(array[i] in fighter)) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
+          if (array[i] in client.mains.get(message.author.id)["mains"] {client.mains.remove(message.author.id,array[i],"mains");return}
           client.mains.push(message.author.id,array[i],"mains")
         }
+        message.channel.send("Your mains are "+client.mains.get(message.author.id)["mains"].join(" | ')
         break;
       case "seconds":
         for (var i = 0;i<array.length;i++) {
