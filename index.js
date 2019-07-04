@@ -45,12 +45,14 @@ client.on("message", (message) => {
   }
   if (command === "fighters") {
     const fighters = fighter.keyArray()
+    const pages = Math.ceil(fighters.length/10)
     if (!isNaN(array[0])) {
       var x = (array[0]*10)-10;
       var y = ((fighters.length)>(x+10)) ? (x+10) : fighters.length;
     }
     let em = new Discord.RichEmbed()
     .setTitle("List of every fighter in Smash!")
+    .setFooter('Page '+array[0]+' of '+pages)
     .setDescription("Use the associated numbers to set your characters in ``!main``")
     for (var i = x; i < y; i++) {
       em.addField(fighters[i],fighter[fighters[i]]);
