@@ -119,6 +119,7 @@ client.on("message", (message) => {
     switch (v) {
       case "mains":
         for (var i = 0;i<array.length;i++) {
+          console.log(array[i].includes(client.mains.get(message.author.id)["mains"]),array[i])
           if (!(array[i] in fighter)) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
           if (array[i].includes(client.mains.get(message.author.id)["mains"])) {client.mains.remove(message.author.id,array[i],"mains");}
           else {client.mains.push(message.author.id,array[i],"mains")}
