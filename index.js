@@ -4,6 +4,7 @@ const Enmap = require('enmap');
 const EnmapMongo = require("enmap-mongo");
 const Discord = require("discord.js");
 const client = new Discord.Client();
+const fighter = require("./characterNames.json");
 const prefix = ".";
 client.friend = new Enmap({ provider: new EnmapMongo({
   name: `smashfriend`,
@@ -41,6 +42,20 @@ client.on("message", (message) => {
     .addField("See everyone else's friendcode with:","``.fclist [page 1-"+Math.ceil(client.friend.keyArray().length/5)+"]``")
     .addField("Share your stage, mii, replay or video with:","``.idadd [stage/mii/replay/video] [id] [Title]``")
     message.channel.send(smashEmbed);
+  }
+  if (command === "fighters") {
+    const fighters = fighter.keyArray()
+    if (!isNaN(array[0])) {
+      var x = (array[0]*10)-10;
+      var y = ((fighters.length)>(x+10)) ? (x+10) : fighters.length;
+    }
+    let em = new Discord.RichEmbed()
+    .setTitle("List of every fighter in Smash!")
+    .setDescription("Use the associated numbers to set your characters in ``!main``")
+    for (var i = x; i < y; i++) {
+      em.addField(fighters[i],fighter[fighters[i]]);
+    }
+    message.channel.send(em);
   }
   if (command === "fclist") {
     const peeps = client.friend.keyArray();
