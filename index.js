@@ -114,17 +114,26 @@ client.on("message", (message) => {
   }
   if (command === "setup") {
     if (!client.mains.has(message.author.id)) {client.mains.set(message.author.id,{"mains":[],"seconds":[],"pockets":[]})}
-    if (array.length <= 2) {message.channel.send("``.setup [mains|seconds|pockets] [character number (find in .fighters)]``")}
+    if (array.length < 2) {message.channel.send("``.setup [mains|seconds|pockets] [character number (find in .fighters)]``")}
     const v = array.shift();
     switch (v) {
       case "mains":
-        client.mains.push(message.author.id,array,"mains")
+        for (var i = 0;i<array.length;i++) {
+          if (array[i] !in fighter) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
+          client.mains.push(message.author.id,array[i],"mains")
+        }
         break;
       case "seconds":
-        client.mains.push(message.author.id,array,"seconds")
+        for (var i = 0;i<array.length;i++) {
+          if (array[i] !in fighter) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
+          client.mains.push(message.author.id,array[i],"seconds")
+        }
         break;
       case "pockets":
-        client.mains.push(message.author.id,array,"pockets")
+        for (var i = 0;i<array.length;i++) {
+          if (array[i] !in fighter) {message.channel.send("``Please use a number corresponding to a fighter!``");return;}
+          client.mains.push(message.author.id,array[i],"pockets")
+        }
         break;
       default:
         message.channel.send("``.setup [mains|seconds|pockets] [character number]``")
