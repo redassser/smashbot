@@ -17,6 +17,12 @@ client.online = new Enmap({ provider: new EnmapMongo({
   url: process.env.mongo1
 })
 })
+client.mains = new Enmap({ provider: new EnmapMongo({
+  name: `smashmains`,
+  dbName: `smashbot`,
+  url: process.env.mongo1
+})
+})
 client.on("ready", () => {
   console.log("Fight!");
   client.user.setPresence({ game: { name: '.smash' }, status: 'online' });
@@ -85,6 +91,16 @@ client.on("message", (message) => {
     var type = array.shift(); var id = array.shift(); var desc = array.join(" ");
     if (type != "stage" && type != "mii" && type != "replay" && type != "video") {message.channel.send("``Please use stage, mii, replay or video``");return;}
     client.online.set(id,[message.author.id,type,desc])
+  }
+  if (command === "setup") {
+    switch (array[0]) {
+      case "mains":
+        break;
+      case "seconds":
+        break;
+      case "pockets":
+        break;
+    }
   }
 });
 client.login(process.env.token);
