@@ -57,6 +57,7 @@ client.on("message", (message) => {
     }
     let em = new Discord.RichEmbed()
     .setTitle("List of every fighter in Smash!")
+    .setURL("https://www.smashbros.com/en_US/fighter/index.html")
     .setFooter('Page '+array[0]+' of '+pages)
     .setColor("#3f9cc6")
     .setDescription("Use the associated numbers to set your characters in ``!setup``\nEchoes are at the end of the pages")
@@ -154,6 +155,7 @@ client.on("message", (message) => {
   if (command === "mains") {
     var mention = message.mentions.members.first();	
     if (!message.isMentioned(mention)) {mention = message.author}
+    console.log(mention)
     var arraym = [];var arrays = [];var arrayp = [];
     let arrayall = new Discord.RichEmbed()
     .setTitle("These are the mains, secondaries and pockets for "+mention.username)
