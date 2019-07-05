@@ -58,6 +58,7 @@ client.on("message", (message) => {
     let em = new Discord.RichEmbed()
     .setTitle("List of every fighter in Smash!")
     .setFooter('Page '+array[0]+' of '+pages)
+    .setColor("#3f9cc6")
     .setDescription("Use the associated numbers to set your characters in ``!setup``\nEchoes are at the end of the pages")
     for (var i = x; i < y; i++) {
       em.addField(fighter[fighters[i]],fighters[i],true);
@@ -75,6 +76,7 @@ client.on("message", (message) => {
     }
     let listEmbed = new Discord.RichEmbed()
     .setTitle("This is a list of friendcodes from people in HT!")
+    .setColor("#3f9cc6")
     .setFooter('Page '+array[0]+' of '+pages)
     if (peeps.length === 0) {message.channel.send("``No friendcodes? ***aaaaaaaaa***``");return}
     for (var i = x; i < y; i++) {
@@ -101,6 +103,7 @@ client.on("message", (message) => {
     }
     let listEmbed = new Discord.RichEmbed()
     .setTitle("This is a list of friendcodes from people in HT!")
+    .setColor("#3f9cc6")
     .setFooter("Page "+array[0]+" of "+pages)
     if (ids.length === 0) {message.channel.send("``No ids? ***aaaaaaaaa***``");return}
     for (var i = x; i < y; i++) {
@@ -154,6 +157,7 @@ client.on("message", (message) => {
     var arraym = [];var arrays = [];var arrayp = [];
     let arrayall = new Discord.RichEmbed()
     .setTitle("These are the mains, secondaries and pockets for "+mention.username)
+    .setColor("#3f9cc6")
     .setFooter("Use .setup to change them")
     for (var i=0;i<client.mains.get(message.author.id)["mains"].length;i++) {
       const num = client.mains.get(message.author.id)["mains"][i]
