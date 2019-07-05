@@ -39,6 +39,8 @@ client.on("message", (message) => {
     .setTitle("This is SmashBot for the HCST gaming discord")
     .setDescription("Use this bot to view friendcodes and share your own!")
     .addField("See a numbered list with every fighter using","``.fighters [page 1-"+Math.ceil(Object.keys(fighter).length/15)+"]``")
+    .addField("Set up your list of Mains, Secondaries, and Pockets with","``.setup [mains|seconds|pockets] [fighter number]``")
+    .addField("Take a look at your (or someone else's!) Mains, Secondaries, and Pockets with","``.mains [optional ping]``")
     .addField("Add your friendcode to the list with:","``.fcadd [name] [friendcode]``")
     .addField("See everyone else's friendcode with:","``.fclist [page 1-"+Math.ceil(client.friend.keyArray().length/5)+"]``")
     .addField("Share your stage, mii, replay or video with:","``.idadd [stage/mii/replay/video] [id] [Title]``")
@@ -151,7 +153,8 @@ client.on("message", (message) => {
     if (!message.isMentioned(mention)) {mention = message.author}
     var arraym = [];var arrays = [];var arrayp = [];
     let arrayall = new Discord.RichEmbed()
-    .setTitle("These are the mains, secondaries and pockets for "+mention)
+    .setTitle("These are the mains, secondaries and pockets for "+mention.username)
+    .setFooter("Use .setup to change them")
     for (var i=0;i<client.mains.get(message.author.id)["mains"].length;i++) {
       const num = client.mains.get(message.author.id)["mains"][i]
       arraym.push(fighter[num])
@@ -159,14 +162,14 @@ client.on("message", (message) => {
     arrayall.addField(arraym.join(", "),client.mains.get(message.author.id)["mains"].join(" | "))	    
     for (var i=0;i<client.mains.get(message.author.id)["seconds"].length;i++) {
       const num = client.mains.get(message.author.id)["seconds"][i]
-      arraym.push(fighter[num])
+      arrays.push(fighter[num])
     }
-    arrayall.addField(arraym.join(", "),client.mains.get(message.author.id)["seconds"].join(" | "))	    
+    arrayall.addField(arrays.join(", "),client.mains.get(message.author.id)["seconds"].join(" | "))	    
     for (var i=0;i<client.mains.get(message.author.id)["pockets"].length;i++) {
       const num = client.mains.get(message.author.id)["pockets"][i]
-      arraym.push(fighter[num])
+      arrayp.push(fighter[num])
     }
-    arrayall.addField(arraym.join(", "),client.mains.get(message.author.id)["pockets"].join(" | "))	    
+    arrayall.addField(arrayp.join(", "),client.mains.get(message.author.id)["pockets"].join(" | "))	    
     message.channel.send(arrayall)
   }
 });
