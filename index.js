@@ -152,13 +152,14 @@ client.on("message", (message) => {
     var arraym = [];var arrays = [];var arrayp = [];
     let arrayall = new Discord.RichEmbed()
     .setTitle("These are the mains, secondaries and pockets for "+mention)
-    for (var i=0;i<array.length;i++) {
+    for (var i=0;i<client.mains.get(message.author.id)["mains"].length;i++) {
       const num = client.mains.get(message.author.id)["mains"][i]
       console.log(num)
       arraym.push(client.mains.get(message.author.id)["mains"][num])
       console.log(client.mains.get(message.author.id)["mains"][num])
     }
-    
+    arrayall.addField(arraym,client.mains.get(message.author.id)["mains"].join(" | "))	    
+    message.channel.send(arrayall)
   }
 });
 client.login(process.env.token);
