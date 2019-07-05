@@ -154,7 +154,9 @@ client.on("message", (message) => {
     .setTitle("These are the mains, secondaries and pockets for "+mention)
     for (var i=0;i<array.length;i++) {
       const num = client.mains.get(message.author.id)["mains"][i]
+      console.log(num)
       arraym.push(client.mains.get(message.author.id)["mains"][num])
+      console.log(client.mains.get(message.author.id)["mains"][num])
     }
     arrayall.addField(arraym,client.mains.get(message.author.id)["mains"].join(" | "))
     message.channel.send(arrayall)
