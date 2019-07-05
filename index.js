@@ -179,6 +179,7 @@ client.on("message", (message) => {
       const num = client.mains.get(mention.id)["pockets"][i]
       arrayp.push(fighter[num])
     }
+    console.log(arrayp)
     if (arrayp.length===0) {arrayp = ["No pockets"]}
     arrayall.addField("Pockets: "+arrayp.join(", "),client.mains.get(mention.id)["pockets"].join(" | "))	    
     message.channel.send(arrayall)
