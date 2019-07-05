@@ -153,8 +153,9 @@ client.on("message", (message) => {
     }
   }
   if (command === "mains") {
-    var mention = message.mentions.members.first().user;	
-    if (!message.isMentioned(mention)) {mention = message.author}
+    var mention = message.mentions.members.first();	
+    if (message.isMentioned(mention)) {mention = mention.user}
+    else {mention = message.author}
     console.log(mention)
     var arraym = [];var arrays = [];var arrayp = [];
     let arrayall = new Discord.RichEmbed()
