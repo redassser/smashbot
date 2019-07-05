@@ -170,7 +170,9 @@ client.on("message", (message) => {
     arrayall.addField("Mains: "+arraym.join(", "),client.mains.get(mention.id)["mains"].join(" | "))	    
     for (var i=0;i<client.mains.get(mention.id)["seconds"].length;i++) {
       const num = client.mains.get(mention.id)["seconds"][i]
+      console.log(num)
       arrays.push(fighter[num])
+      console.log(arrays)
     }
     if (arrays.length=0) {arrayp = ["No Secondaries"]}
     arrayall.addField("Secondaries: "+arrays.join(", "),client.mains.get(mention.id)["seconds"].join(" | "))	    
