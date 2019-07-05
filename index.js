@@ -149,7 +149,15 @@ client.on("message", (message) => {
   if (command === "mains") {
     var mention = message.mentions.members.first();	
     if (!message.isMentioned(mention)) {mention = message.author}
-    console.log(mention.id)
+    var arraym = [];var arrays = [];var arrayp = [];
+    let arrayall = new Discord.RichEmbed()
+    .setTitle("These are the mains, secondaries and pockets for "+mention)
+    for (var i=0;i<array.length;i++) {
+      const num = client.mains.get(message.author.id)["mains"][i]
+      arraym.push(client.mains.get(message.author.id)["mains"][num])
+    }
+    arrayall.addField(arraym,client.mains.get(message.author.id)["mains"].join(" | "))
+    message.channel.send(arrayall)
   }
 });
 client.login(process.env.token);
