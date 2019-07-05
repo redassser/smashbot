@@ -167,20 +167,20 @@ client.on("message", (message) => {
       const num = client.mains.get(mention.id)["mains"][i]
       arraym.push(fighter[num])
     }
-    if (arraym.length===0) {arraym = ["No Mains"]}
+    if (arraym.length===0) {arraym.push("No Mains")}
     arrayall.addField("Mains: "+arraym.join(", "),client.mains.get(mention.id)["mains"].join(" | "))	    
     for (var i=0;i<client.mains.get(mention.id)["seconds"].length;i++) {
       const num = client.mains.get(mention.id)["seconds"][i]
       arrays.push(fighter[num])
     }
-    if (arrays.length===0) {arrays = ["No Secondaries"]}
+    if (arrays.length===0) {arrays.push("No Secondaries")}
     arrayall.addField("Secondaries: "+arrays.join(", "),client.mains.get(mention.id)["seconds"].join(" | "))	    
     for (var i=0;i<client.mains.get(mention.id)["pockets"].length;i++) {
       const num = client.mains.get(mention.id)["pockets"][i]
       arrayp.push(fighter[num])
     }
-    console.log(arrayp)
-    if (arrayp.length===0) {arrayp = ["No pockets"]}
+    console.log(arrayp.length)
+    if (arrayp.length===0) {arrayp.push("No pockets")}
     arrayall.addField("Pockets: "+arrayp.join(", "),client.mains.get(mention.id)["pockets"].join(" | "))	    
     message.channel.send(arrayall)
   }
