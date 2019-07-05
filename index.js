@@ -153,7 +153,7 @@ client.on("message", (message) => {
     }
   }
   if (command === "mains") {
-    var mention = message.mentions.members.first();	
+    var mention = message.mentions.members.first().user;	
     if (!message.isMentioned(mention)) {mention = message.author}
     console.log(mention)
     var arraym = [];var arrays = [];var arrayp = [];
