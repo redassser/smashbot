@@ -156,7 +156,7 @@ client.on("message", (message) => {
     var mention = message.mentions.members.first();	
     if (message.isMentioned(mention)) {mention = mention.user}
     else {mention = message.author}
-    console.log(mention)
+    console.log(mention, mention.id)
     var arraym = [];var arrays = [];var arrayp = [];
     let arrayall = new Discord.RichEmbed()
     .setTitle("These are the mains, secondaries and pockets for "+mention.username)
@@ -167,19 +167,19 @@ client.on("message", (message) => {
       arraym.push(fighter[num])
     }
     if (arraym.length=0) {arraym = ["No Mains"]}
-    arrayall.addField(arraym.join(", "),client.mains.get(mention.id)["mains"].join(" | "))	    
+    arrayall.addField("Mains: "+arraym.join(", "),client.mains.get(mention.id)["mains"].join(" | "))	    
     for (var i=0;i<client.mains.get(mention.id)["seconds"].length;i++) {
       const num = client.mains.get(mention.id)["seconds"][i]
       arrays.push(fighter[num])
     }
     if (arrays.length=0) {arrayp = ["No Secondaries"]}
-    arrayall.addField(arrays.join(", "),client.mains.get(mention.id)["seconds"].join(" | "))	    
+    arrayall.addField("Secondaries: "+arrays.join(", "),client.mains.get(mention.id)["seconds"].join(" | "))	    
     for (var i=0;i<client.mains.get(mention.id)["pockets"].length;i++) {
       const num = client.mains.get(mention.id)["pockets"][i]
       arrayp.push(fighter[num])
     }
     if (arrayp.length=0) {arrayp = ["No pockets"]}
-    arrayall.addField(arrayp.join(", "),client.mains.get(mention.id)["pockets"].join(" | "))	    
+    arrayall.addField("Pockets: "+arrayp.join(", "),client.mains.get(mention.id)["pockets"].join(" | "))	    
     message.channel.send(arrayall)
   }
 });
