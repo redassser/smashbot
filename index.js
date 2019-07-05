@@ -161,21 +161,21 @@ client.on("message", (message) => {
     .setTitle("These are the mains, secondaries and pockets for "+mention.username)
     .setColor("#3f9cc6")
     .setFooter("Use .setup to change them")
-    for (var i=0;i<client.mains.get(message.author.id)["mains"].length;i++) {
-      const num = client.mains.get(message.author.id)["mains"][i]
+    for (var i=0;i<client.mains.get(mention.id)["mains"].length;i++) {
+      const num = client.mains.get(mention.id)["mains"][i]
       arraym.push(fighter[num])
     }
-    arrayall.addField(arraym.join(", "),client.mains.get(message.author.id)["mains"].join(" | "))	    
-    for (var i=0;i<client.mains.get(message.author.id)["seconds"].length;i++) {
-      const num = client.mains.get(message.author.id)["seconds"][i]
+    arrayall.addField(arraym.join(", "),client.mains.get(mention.id)["mains"].join(" | "))	    
+    for (var i=0;i<client.mains.get(mention.id)["seconds"].length;i++) {
+      const num = client.mains.get(mention.id)["seconds"][i]
       arrays.push(fighter[num])
     }
-    arrayall.addField(arrays.join(", "),client.mains.get(message.author.id)["seconds"].join(" | "))	    
-    for (var i=0;i<client.mains.get(message.author.id)["pockets"].length;i++) {
-      const num = client.mains.get(message.author.id)["pockets"][i]
+    arrayall.addField(arrays.join(", "),client.mains.get(mention.id)["seconds"].join(" | "))	    
+    for (var i=0;i<client.mains.get(mention.id)["pockets"].length;i++) {
+      const num = client.mains.get(mention.id)["pockets"][i]
       arrayp.push(fighter[num])
     }
-    arrayall.addField(arrayp.join(", "),client.mains.get(message.author.id)["pockets"].join(" | "))	    
+    arrayall.addField(arrayp.join(", "),client.mains.get(mention.id)["pockets"].join(" | "))	    
     message.channel.send(arrayall)
   }
 });
