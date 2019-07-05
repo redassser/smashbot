@@ -158,8 +158,7 @@ client.on("message", (message) => {
       arraym.push(client.mains.get(message.author.id)["mains"][num])
       console.log(client.mains.get(message.author.id)["mains"][num])
     }
-    arrayall.addField(arraym,client.mains.get(message.author.id)["mains"].join(" | "))
-    message.channel.send(arrayall)
+    
   }
 });
 client.login(process.env.token);
