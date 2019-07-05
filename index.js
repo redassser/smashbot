@@ -154,11 +154,19 @@ client.on("message", (message) => {
     .setTitle("These are the mains, secondaries and pockets for "+mention)
     for (var i=0;i<client.mains.get(message.author.id)["mains"].length;i++) {
       const num = client.mains.get(message.author.id)["mains"][i]
-      console.log(num)
       arraym.push(fighter[num])
-      console.log(fighter[num])
     }
-    arrayall.addField(arraym,client.mains.get(message.author.id)["mains"].join(" | "))	    
+    arrayall.addField(arraym.join(", "),client.mains.get(message.author.id)["mains"].join(" | "))	    
+    for (var i=0;i<client.mains.get(message.author.id)["seconds"].length;i++) {
+      const num = client.mains.get(message.author.id)["seconds"][i]
+      arraym.push(fighter[num])
+    }
+    arrayall.addField(arraym.join(", "),client.mains.get(message.author.id)["seconds"].join(" | "))	    
+    for (var i=0;i<client.mains.get(message.author.id)["pockets"].length;i++) {
+      const num = client.mains.get(message.author.id)["pockets"][i]
+      arraym.push(fighter[num])
+    }
+    arrayall.addField(arraym.join(", "),client.mains.get(message.author.id)["pockets"].join(" | "))	    
     message.channel.send(arrayall)
   }
 });
