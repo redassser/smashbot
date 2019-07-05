@@ -156,6 +156,7 @@ client.on("message", (message) => {
     var mention = message.mentions.members.first();	
     if (message.isMentioned(mention)) {mention = mention.user}
     else {mention = message.author}
+    if (client.mains.has(mention.id)){message.channel.send(mention+" probably wants to do .setup")return;}
     console.log(mention, mention.id)
     var arraym = [];var arrays = [];var arrayp = [];
     let arrayall = new Discord.RichEmbed()
