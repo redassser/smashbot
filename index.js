@@ -155,8 +155,8 @@ client.on("message", (message) => {
     for (var i=0;i<client.mains.get(message.author.id)["mains"].length;i++) {
       const num = client.mains.get(message.author.id)["mains"][i]
       console.log(num)
-      arraym.push(client.mains.get(message.author.id)["mains"][num])
-      console.log(client.mains.get(message.author.id)["mains"][num])
+      arraym.push(fighter[num])
+      console.log(fighter[num])
     }
     arrayall.addField(arraym,client.mains.get(message.author.id)["mains"].join(" | "))	    
     message.channel.send(arrayall)
