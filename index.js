@@ -47,35 +47,4 @@ fs.readdir("./commands/", (err, files) => {
     client.commands.set(commandName, props);
   });
 });
-client.on("message", (message) => {
-  const array = message.content.slice(prefix.length).trim().split(/ +/g);
-  const command = array.shift();  
-  if (!message.content.startsWith(prefix) || message.author.bot) return;
-  //code starts here lol
-  if (command === "idlist") {
-    const ids = client.online.keyArray();
-    const pages = Math.ceil(ids/5)
-    if (isNaN(array[0])) {message.channel.send("``.idlist [page number]``");return;}
-    if (((array[0]*5))>(ids.length+5)) {message.channel.send("``There aren't that many pages``");return;}
-    if (!isNaN(array[0])) {
-      var x = (array[0]*5)-5;
-      var y = ((ids.length)>(x+5)) ? (x+5) : ids.length;
-    }
-    let listEmbed = new Discord.RichEmbed()
-    .setTitle("This is a list of friendcodes from people in HT!")
-    .setColor("#3f9cc6")
-    .setFooter("Page "+array[0]+" of "+pages)
-    if (ids.length === 0) {message.channel.send("``No ids? ***aaaaaaaaa***``");return}
-    for (var i = x; i < y; i++) {
-      listEmbed.addField("Added by: "+client.online.get(ids[i])[1].username, '${ids[i]}'+ client.online.get(ids[i])[0]);
-    }
-    message.channel.send(listEmbed);
-  }
-  if (command === "idadd") {
-    if (array.length < 3) {message.channel.send("``.idadd [type] [id] [Title]``"); return;}
-    var type = array.shift(); var id = array.shift(); var desc = array.join(" ");
-    if (type != "stage" && type != "mii" && type != "replay" && type != "video") {message.channel.send("``Please use stage, mii, replay or video``");return;}
-    client.online.set(id,[message.author.id,type,desc])
-  }
-});
 client.login(process.env.token);
