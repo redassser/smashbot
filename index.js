@@ -5,6 +5,7 @@ const EnmapMongo = require("enmap-mongo");
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const fighter = require("./characterNames.json");
+const fs = require("fs");
 const prefix = ".";
 client.friend = new Enmap({ provider: new EnmapMongo({
   name: `smashfriend`,
