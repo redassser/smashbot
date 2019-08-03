@@ -4,7 +4,7 @@ exports.run = (client,message,array) => {
     .setColor("#3f9cc6")
     .setTitle("This is SmashBot for the HCST gaming discord")
     .setDescription("Use this bot to view friendcodes and share your own!")
-    .addField("See a numbered list with every fighter using","``.fighters [page 1-"+Math.ceil(Object.keys(fighter).length/15)+"]``")
+    .addField("See a numbered list with every fighter using","``.fighters [page 1-"+Math.ceil(Object.keys(client.fighter).length/15)+"]``")
     .addField("Set up your list of Mains, Secondaries, and Pockets with","``.setup [mains|seconds|pockets] [fighter number]``")
     .addField("Take a look at your (or someone else's!) Mains, Secondaries, and Pockets with","``.mains [optional ping]``")
     .addField("Add your friendcode to the list with:","``.fcadd [name] [friendcode]``")
