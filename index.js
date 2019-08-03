@@ -52,26 +52,6 @@ client.on("message", (message) => {
   const command = array.shift();  
   if (!message.content.startsWith(prefix) || message.author.bot) return;
   //code starts here lol
-  if (command === "fighters") {
-    const fighters = Object.keys(fighter)
-    if (isNaN(array[0])) {message.channel.send("``.fighters [page number]``");return;}
-    if (((array[0]*15))>(fighters.length+15)) {message.channel.send("``There aren't that many pages``");return;}
-    const pages = Math.ceil(fighters.length/15)
-    if (!isNaN(array[0])) {
-      var x = (array[0]*15)-15;
-      var y = ((fighters.length)>(x+15)) ? (x+15) : fighters.length;
-    }
-    let em = new Discord.RichEmbed()
-    .setTitle("List of every fighter in Smash!")
-    .setURL("https://www.smashbros.com/en_US/fighter/index.html")
-    .setFooter('Page '+array[0]+' of '+pages)
-    .setColor("#3f9cc6")
-    .setDescription("Use the associated numbers to set your characters in ``!setup``\nEchoes are at the end of the pages")
-    for (var i = x; i < y; i++) {
-      em.addField(fighter[fighters[i]],fighters[i],true);
-    }
-    message.channel.send(em);
-  }
   if (command === "fclist") {
     const peeps = client.friend.keyArray();
     const pages = Math.ceil(peeps.length/5)
@@ -157,40 +137,6 @@ client.on("message", (message) => {
         message.channel.send("``.setup [mains|seconds|pockets] [character number]``")
         break;
     }
-  }
-  if (command === "mains") {
-    var mention = message.mentions.members.first();	
-    if (message.isMentioned(mention)) {mention = mention.user}
-    else {mention = message.author}
-    if (!client.mains.has(mention.id)){message.channel.send(mention+" probably wants to do .setup");return;}
-    console.log(mention, mention.id)
-    var arraym = [];var arrays = [];var arrayp = [];
-    let arrayall = new Discord.RichEmbed()
-    .setTitle("These are the mains, secondaries and pockets for "+mention.username)
-    .setColor("#3f9cc6")
-    .setFooter("Use .setup to change them")
-    for (var i=0;i<client.mains.get(mention.id)["mains"].length;i++) {
-      const num = client.mains.get(mention.id)["mains"][i]
-      arraym.push(fighter[num])
-    }
-    var mval = client.mains.get(mention.id)["mains"].join(" | ");
-    if (arraym.length===0) {mval = ("No Mains")}
-    arrayall.addField("Mains: "+arraym.join(", "),mval)	    
-    for (var i=0;i<client.mains.get(mention.id)["seconds"].length;i++) {
-      const num = client.mains.get(mention.id)["seconds"][i]
-      arrays.push(fighter[num])
-    }
-    var sval = client.mains.get(mention.id)["seconds"].join(" | ");
-    if (arrays.length===0) {sval = ("No Secondaries")}
-    arrayall.addField("Secondaries: "+arrays.join(", "),sval)	    
-    for (var i=0;i<client.mains.get(mention.id)["pockets"].length;i++) {
-      const num = client.mains.get(mention.id)["pockets"][i]
-      arrayp.push(fighter[num])
-    }
-    var pval = client.mains.get(mention.id)["pockets"].join(" | ");
-    if (arrayp.length===0) {pval=("No pockets")}
-    arrayall.addField("Pockets: "+arrayp.join(", "),pval)	    
-    message.channel.send(arrayall)
   }
 });
 client.login(process.env.token);
