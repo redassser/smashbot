@@ -1,4 +1,4 @@
-module.exports = (client,message,array) => {
+exports.run = (client,message,array) => {
   const Discord = require("discord.js");
   let smashEmbed = new Discord.RichEmbed() 
     .setColor("#3f9cc6")
