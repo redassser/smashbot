@@ -15,7 +15,7 @@ exports.run = (client,message,array) => {
     .setColor("#3f9cc6")
     .setDescription("Use the associated numbers to set your characters in ``!setup``\nEchoes are at the end of the pages")
     for (var i = x; i < y; i++) {
-      em.addField(fighter[fighters[i]],fighters[i],true);
+      em.addField(client.fighter[fighters[i]],fighters[i],true);
     }
     message.channel.send(em);
 }
