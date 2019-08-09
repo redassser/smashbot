@@ -1,4 +1,5 @@
 exports.run = (client,message,array) => {
+  const Discord = require("discord.js")
   const peeps = client.friend.keyArray();
     const pages = Math.ceil(peeps.length/5)
     if (isNaN(array[0])) {message.channel.send("``.fclist [page number]``");return;}
