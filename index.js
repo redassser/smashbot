@@ -49,8 +49,9 @@ fs.readdir("./commands/", (err, files) => {
 });
 
 client.on("message", (message) => { 
-  message.isMentioned("545424826307969064");
+  if (message.isMentioned("545424826307969064")) {
   message.channel.send("test"); 
+  }
 });
 
 client.login(process.env.token);
