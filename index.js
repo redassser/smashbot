@@ -5,6 +5,7 @@ const EnmapMongo = require("enmap-mongo");
 const Discord = require("discord.js");
 const client = new Discord.Client();
 const fighter = require("./characterNames.json");
+const phrases = require("./MichaelPhrases.json")
 client.fighter = fighter;
 const fs = require("fs");
 const prefix = ".";
@@ -50,7 +51,8 @@ fs.readdir("./commands/", (err, files) => {
 
 client.on("message", (message) => { 
   if (message.isMentioned("545424826307969064")) {
-  message.channel.send("test"); 
+    var pp = phrases.list[Math.floor(Math.random()*phrases.list.length)];
+    message.channel.send(pp); 
   }
 });
 
