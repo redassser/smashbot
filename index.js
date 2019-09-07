@@ -47,4 +47,10 @@ fs.readdir("./commands/", (err, files) => {
     client.commands.set(commandName, props);
   });
 });
+
+client.on("message", (message) => { 
+  message.isMentioned("545424826307969064");
+  message.channel.send("test"); 
+});
+
 client.login(process.env.token);
